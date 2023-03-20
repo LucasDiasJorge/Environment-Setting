@@ -1,42 +1,66 @@
 #!/bin/bash
 
-# Atualiza o sistema
+# Atualizar o sistema
 sudo apt-get update
 sudo apt-get upgrade
 
-# Instala o GCC, MakeFile, Git e Rust
-sudo apt-get install -y gcc make git rustc
-
-# Instala o VSCode
-wget -O vscode.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-sudo dpkg -i vscode.deb
-rm vscode.deb
-
-# Instala o Postman
-sudo snap install postman
-
-# Instala o IntelliJ IDEA
-wget -O intellij.tar.gz https://download.jetbrains.com/idea/ideaIU-2021.3.3.tar.gz
-sudo tar -xzf intellij.tar.gz -C /opt/
-rm intellij.tar.gz
-
-# Instala o Java JDK 19
-sudo apt-get install -y openjdk-11-jdk
+# Instalar pacotes essenciais
+sudo apt-get install build-essential git wget curl vim
 
 # Faz o download da imagem e define como papel de parede
 wget -O wallpaper.jpg https://www.10wallpaper.com/wallpaper/1920x1080/1711/Calm_lake_in_the_evening_Scenery_HD_Wallpaper_1920x1080.jpg
 gsettings set org.gnome.desktop.background picture-uri file://$(pwd)/wallpaper.jpg
 
-# Configura o tema escuro com detalhes em roxo do Ubuntu
-sudo apt-get install -y gnome-tweak-tool
-sudo apt-get install -y gnome-shell-extensions
-sudo apt-get install -y chrome-gnome-shell
-wget -O dark-purple.tar.gz "https://github.com/rafiibrahim8/Gnome-Dark-Purple/archive/refs/tags/v2.2.tar.gz"
-sudo tar -xzf dark-purple.tar.gz -C /usr/share/themes/
-rm dark-purple.tar.gz
-gsettings set org.gnome.desktop.interface gtk-theme "Gnome-Dark-Purple-2.2"
+# Instalar Java JDK
+sudo apt-get install default-jdk
+
+# Instalar PostgreSQL e PGAdmin
+sudo apt-get install postgresql postgresql-contrib pgadmin4
+
+# Configurar PostgreSQL para usar UTF-8
+sudo sed -i "s/#\s*\(.*UTF-8\)/\1/" /etc/locale.gen
+sudo locale-gen
+sudo update-locale LANG=en_US.UTF-8
+sudo service postgresql restart
+
+# Instalar compilador C e C++ (GCC)
+sudo apt-get install gcc g++
+
+# Instalar Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Instalar o ambiente de desenvolvimento integrado (IDE) IntelliJ
+wget https://download-cf.jetbrains.com/idea/ideaIC-2021.3.3.tar.gz
+tar -xvzf ideaIC-2021.3.3.tar.gz
+sudo mv idea-IC-* /opt/
+echo -e "[Desktop Entry]\nEncoding=UTF-8\nName=IntelliJ IDEA\nComment=IntelliJ IDEA\nExec=/opt/idea-IC-*/bin/idea.sh\nIcon=/opt/idea-IC-*/bin/idea.png\nTerminal=false\nType=Application\nCategories=GNOME;Application;Development;" > ~/.local/share/applications/intellij.desktop
+chmod +x ~/.local/share/applications/intellij.desktop
+
+# Instalar o VS Code
+wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+sudo apt install ./code_*_amd64.deb
+rm code_*_amd64.deb
+
+echo "Configurando VS Code extensions"
+# Instalar as extensões do VS Code
+code --install-extension redhat.java
+code --install-extension ms-vscode.cpptools
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension vscode-icons-team.vscode-icons
+code --install-extension tht13.python
+code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+code --install-extension ms-azure-devops.azure-pipelines
+code --install-extension ms-python.vscode-pylance
+code --install-extension rust-lang.rust
+
+# Configurar o PostgreSQL
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
+sudo -u postgres createdb -O postgres mydb
+
+# Instala o Postman
+sudo snap install postman
 
 # Instala o Arduino IDE
 sudo apt-get install -y arduino
 
-echo "Instalação concluída."
+echo "Configuração concluída!"
