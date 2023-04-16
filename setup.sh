@@ -4,8 +4,11 @@
 sudo apt-get update
 sudo apt-get upgrade
 
-# Instalar pacotes essenciais
-sudo apt-get install build-essential git wget curl vim
+# Instalar o git
+sudo apt-get install git
+
+# Configura o git
+git config —global user.email {seu email git}
 
 # Faz o download da imagem e define como papel de parede
 wget -O wallpaper.jpg https://www.10wallpaper.com/wallpaper/1920x1080/1711/Calm_lake_in_the_evening_Scenery_HD_Wallpaper_1920x1080.jpg
@@ -13,6 +16,10 @@ gsettings set org.gnome.desktop.background picture-uri file://$(pwd)/wallpaper.j
 
 # Instalar Java JDK
 sudo apt-get install default-jdk
+
+# Instalar Maven
+sudo apt-get update
+sudo apt-get install maven
 
 # Instalar PostgreSQL e PGAdmin
 sudo apt-get install postgresql postgresql-contrib pgadmin4
