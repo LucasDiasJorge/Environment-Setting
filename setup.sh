@@ -70,4 +70,7 @@ sudo snap install postman
 # Instala o Arduino IDE
 sudo apt-get install -y arduino
 
+# Instala o SHH termius
+sudo snap install termius-app
+
 echo "Configuração concluída!"
