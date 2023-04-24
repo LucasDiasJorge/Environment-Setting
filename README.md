@@ -32,3 +32,5 @@ This script installs the following packages and configurations:
 12. Install Postman
 
 13. Install Arduino IDE
+
+14. Install Termius
