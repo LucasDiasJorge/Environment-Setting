@@ -34,3 +34,5 @@ This script installs the following packages and configurations:
 13. Install Arduino IDE
 
 14. Install Termius
+
+15. Install Gradle
