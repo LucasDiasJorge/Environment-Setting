@@ -73,4 +73,10 @@ sudo apt-get install -y arduino
 # Instala o SHH termius
 sudo snap install termius-app
 
+# Instala o Gradle
+mkdir /opt/gradle
+wget https://services.gradle.org/distributions/gradle-8.1.1-bin.zip -P /opt/gradle/
+unzip -d /opt/gradle gradle-8.1.1-bin.zip
+ls /opt/gradle/gradle-8.1.1
+
 echo "Configuração concluída!"
