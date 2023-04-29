@@ -36,3 +36,7 @@ This script installs the following packages and configurations:
 14. Install Termius
 
 15. Install Gradle
+
+16. Install Balena etcher
+
+17. Install PGAdmin 4 
