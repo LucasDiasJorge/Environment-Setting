@@ -79,4 +79,7 @@ wget https://services.gradle.org/distributions/gradle-8.1.1-bin.zip -P /opt/grad
 unzip -d /opt/gradle gradle-8.1.1-bin.zip
 ls /opt/gradle/gradle-8.1.1
 
+# Instala o balena etcher
+wget https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-1.18.4-x64.AppImage
+
 echo "Configuração concluída!"
