@@ -82,4 +82,10 @@ ls /opt/gradle/gradle-8.1.1
 # Instala o balena etcher
 wget https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-1.18.4-x64.AppImage
 
+# Instala o PGAdmin 4
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+sudo apt-get update
+sudo apt install pgadmin4 pgadmin4-apache2
+
 echo "Configuração concluída!"
