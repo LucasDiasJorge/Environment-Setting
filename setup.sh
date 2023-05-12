@@ -17,11 +17,19 @@ gsettings set org.gnome.desktop.background picture-uri file://$(pwd)/wallpaper.j
 # Instalar Java JDK
 sudo apt-get install default-jdk
 
+# Instalar compilador C e C++ (GCC)
+sudo apt-get install gcc g++
+
+# Instalar Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # Instalar Maven
 sudo apt-get update
 sudo apt-get install maven
 
 # Instalar PostgreSQL e PGAdmin
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 sudo apt-get install postgresql postgresql-contrib pgadmin4
 
 # Configurar PostgreSQL para usar UTF-8
@@ -30,11 +38,15 @@ sudo locale-gen
 sudo update-locale LANG=en_US.UTF-8
 sudo service postgresql restart
 
-# Instalar compilador C e C++ (GCC)
-sudo apt-get install gcc g++
+# Configurar o PostgreSQL
+sudo -u postgres psql -c "alter user postgres with password 'postgres';"
+sudo -u postgres createdb -O postgres mydb
 
-# Instalar Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Instala o PGAdmin 4
+curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
+sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+sudo apt install pgadmin4-desktop
 
 # Instalar o ambiente de desenvolvimento integrado (IDE) IntelliJ
 wget https://download-cf.jetbrains.com/idea/ideaIC-2021.3.3.tar.gz
@@ -60,10 +72,6 @@ code --install-extension ms-azure-devops.azure-pipelines
 code --install-extension ms-python.vscode-pylance
 code --install-extension rust-lang.rust
 
-# Configurar o PostgreSQL
-sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
-sudo -u postgres createdb -O postgres mydb
-
 # Instala o Postman
 sudo snap install postman
 
@@ -81,10 +89,5 @@ ls /opt/gradle/gradle-8.1.1
 
 # Instala o balena etcher
 wget https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-1.18.4-x64.AppImage
-
-# Instala o PGAdmin 4
-curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
-sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
-sudo apt install pgadmin4-desktop
 
 echo "Configuração concluída!"
