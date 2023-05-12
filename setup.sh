@@ -90,4 +90,7 @@ ls /opt/gradle/gradle-8.1.1
 # Instala o balena etcher
 wget https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-1.18.4-x64.AppImage
 
+# Setserial installation
+sudo apt install setserial
+
 echo "Configuração concluída!"
