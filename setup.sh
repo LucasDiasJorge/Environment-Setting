@@ -42,11 +42,16 @@ sudo service postgresql restart
 sudo -u postgres psql -c "alter user postgres with password 'postgres';"
 sudo -u postgres createdb -O postgres mydb
 
-
 # Instala o PGAdmin 4
 curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
 sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
 sudo apt install pgadmin4-desktop
+
+# Instala o MySQL Server
+apt install -y mysql-server
+
+# Inicia o serviço do MySQL
+service mysql start
 
 # Instalar o ambiente de desenvolvimento integrado (IDE) IntelliJ
 wget https://download-cf.jetbrains.com/idea/ideaIC-2021.3.3.tar.gz
