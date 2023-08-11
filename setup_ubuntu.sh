@@ -61,5 +61,8 @@ sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microso
 sudo apt update
 sudo apt install code -y
 
+# Instalar o vysor
+(echo 'deb [arch=amd64, trusted=yes] https://nuts.vysor.io/apt ./' | sudo tee /etc/apt/sources.list.d/vysor.list) && sudo apt update && sudo apt install vysor
+
 # Fim da instalação
 echo "Instalação concluída!"
