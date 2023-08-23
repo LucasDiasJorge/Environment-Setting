@@ -46,4 +46,8 @@ sudo dnf install code
 # Instalar whiteboard
 flatpak install flathub ch.openboard.OpenBoard
 
+# Instalar Snap
+sudo dnf install snapd
+sudo ln -s /var/lib/snapd/snap /snap
+
 echo "Instalação concluída com sucesso!"
