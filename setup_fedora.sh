@@ -32,9 +32,6 @@ sudo dnf install mysql-server
 sudo systemctl enable --now mysqld
 sudo systemctl start mysqld
 
-# Instalar Gradle
-sudo dnf install gradle
-
 # Instalar Maven
 sudo dnf install maven
 
@@ -49,5 +46,8 @@ flatpak install flathub ch.openboard.OpenBoard
 # Instalar Snap
 sudo dnf install snapd
 sudo ln -s /var/lib/snapd/snap /snap
+
+# Instalar Gradle
+sudo snap install gradle --classic
 
 echo "Instalação concluída com sucesso!"
