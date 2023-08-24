@@ -53,4 +53,7 @@ sudo snap install gradle --classic
 # Instalar PGAdmin
 sudo yum install pgadmin4-desktop
 
+# Instalar Lib Curl para C
+sudo dnf install libcurl-devel
+
 echo "Instalação concluída com sucesso!"
