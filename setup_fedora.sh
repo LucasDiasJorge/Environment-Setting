@@ -50,4 +50,7 @@ sudo ln -s /var/lib/snapd/snap /snap
 # Instalar Gradle
 sudo snap install gradle --classic
 
+# Instalar PGAdmin
+sudo yum install pgadmin4-desktop
+
 echo "Instalação concluída com sucesso!"
