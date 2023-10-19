@@ -57,6 +57,6 @@ sudo yum install pgadmin4-desktop
 sudo dnf install libcurl-devel
 
 # Instalar AnyDesk
-sudo dnf install anydesk
+dnf install anydesk
 
 echo "Instalação concluída com sucesso!"
