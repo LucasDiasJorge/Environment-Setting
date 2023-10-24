@@ -59,4 +59,11 @@ sudo dnf install libcurl-devel
 # Instalar AnyDesk
 dnf install anydesk
 
+# Instalar BalenaEtcher
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+curl -1sLf \
+'https://dl.cloudsmith.io/public/balena/etcher/setup.rpm.sh' \
+| sudo -E bash
+sudo dnf install -s balena-etcher-electron
+
 echo "Instalação concluída com sucesso!"
