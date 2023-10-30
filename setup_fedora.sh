@@ -8,9 +8,6 @@ wget -O idea.tar.gz https://download.jetbrains.com/idea/ideaIU-2023.1.1.tar.gz
 tar -xzf idea.tar.gz
 sudo mv idea-IU-212.5080.55 /opt/idea
 
-# Instalar Snap
-sudo dnf install snapd
-
 # Instalar PostgreSQL
 sudo dnf install postgresql-server postgresql-contrib
 sudo postgresql-setup --initdb
