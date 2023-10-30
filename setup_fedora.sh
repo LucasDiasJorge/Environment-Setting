@@ -63,4 +63,7 @@ curl -1sLf \
 | sudo -E bash
 sudo dnf install -s balena-etcher-electron
 
+# Instalar Termius
+sudo snap install termius-app
+
 echo "Instalação concluída com sucesso!"
